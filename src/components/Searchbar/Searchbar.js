@@ -12,7 +12,7 @@ export default function Searchbar({ handleSubmit }) {
         </button>
         <input
           className={styles.searchFormInput}
-          name="serach"
+          name="search"
           type="text"
           required
           autoComplete="off"

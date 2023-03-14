@@ -20,7 +20,7 @@ export default function App() {
   const [status, setStatus] = useState(statusList.idle);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [imageModal, setImageModal] = useState({ largeImageURL: '', tags: '' });
-  const [resaltLength, setResaltLength] = useState();
+  const [resaltLength, setResaltLength] = useState(0);
 
   const prevQuery = useRef('');
 
@@ -48,21 +48,18 @@ export default function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (searchQuery !== event.target.serach.value) {
+    if (searchQuery !== event.target.search.value) {
       setCurrentPage(1);
-      setSearchQuery(event.target.serach.value);
-      event.target.serach.value = '';
+      setSearchQuery(event.target.search.value);
       window.scrollTo(0, 0);
-    } else if (searchQuery === event.target.serach.value) {
+    } else {
       setCurrentPage(prevState => prevState + 1);
-      event.target.serach.value = '';
     }
   };
 
-  const setModalImg = id => {
-    const { largeImageURL, tags } = images.find(image => image.id === id);
-    setIsOpenModal(true);
+  const setModalImg = (largeImageURL, tags) => {
     setImageModal({ largeImageURL: largeImageURL, tags: tags });
+    setIsOpenModal(true);
   };
 
   const toggleModal = () => {

@@ -3,13 +3,13 @@ import styles from '../ImageGalleryItem/ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
 export default function ImageGalleryItem({ image, setModalImg }) {
-  const { webformatURL, largeImageURL, tags, id } = image;
+  const { webformatURL, largeImageURL, tags } = image;
   return (
     <>
       <li className={styles.ImageGalleryItem}>
         <img
           className={styles.ImageGalleryItemImage}
-          onClick={() => setModalImg(id)}
+          onClick={() => setModalImg(largeImageURL, tags)}
           src={webformatURL}
           data-src={largeImageURL}
           alt={tags}
